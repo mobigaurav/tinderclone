@@ -14,23 +14,6 @@ import {
 
 const AuthContext = createContext({});
 
-const config = {
-  androidClientId:
-    "102410195823-7cpsd7di3iflnar1qpvp9mfulpj3o0vn.apps.googleusercontent.com",
-  iosClientId:
-    "102410195823-97j6b1acfgvn3krqt8n1bvgvtqjuc8ld.apps.googleusercontent.com",
-  webClientId:
-    "102410195823-fu4jpgj62fldbi67499mcnig3265u2d9.apps.googleusercontent.com",
-  scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
-  offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
-  hostedDomain: "", // specifies a hosted domain restriction
-  forceCodeForRefreshToken: true, // [Android] related to `serverAuthCode`, read the docs link below *.
-  accountName: "", // [Android] specifies an account name on the device that should be used
-  googleServicePlistPath: "", // [iOS] if you renamed your GoogleService-Info file, new name here, e.g. GoogleService-Info-Staging
-  openIdRealm: "", // [iOS] The OpenID2 realm of the home web server. This allows Google to include the user's OpenID Identifier in the OpenID Connect ID token.
-  profileImageSize: 120, // [iOS] The desired height (and width) of the profile image. Defaults to 120px
-  loginHint: "", // [iOS] The user's ID, or email address, to be prefilled in the authentication UI if possible. The Google Sign-In button will be hidden if a login hint is provided and does not match the signed in user.
-};
 
 export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
@@ -41,13 +24,14 @@ export const AuthProvider = ({ children }) => {
   const provider = new GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
+
+
   GoogleSignin.configure({
-    // androidClientId:
-    //   "102410195823-7cpsd7di3iflnar1qpvp9mfulpj3o0vn.apps.googleusercontent.com",
+    // It is mandatory to call this method before attempting to call signIn()
     iosClientId:
-      "102410195823-97j6b1acfgvn3krqt8n1bvgvtqjuc8ld.apps.googleusercontent.com",
+      "",
     webClientId:
-      "102410195823-fu4jpgj62fldbi67499mcnig3265u2d9.apps.googleusercontent.com",
+      "",
     scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
     offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
     hostedDomain: "", // specifies a hosted domain restriction
