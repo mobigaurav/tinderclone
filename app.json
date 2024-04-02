@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "mycoolredirect",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -14,17 +15,29 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "bundleIdentifier": "host.exp.exponent"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#ffffff",
+        "googleServicesFile": "./google-services.json"
+      },
+      "package": "host.exp.exponent"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6d4e7bd7-cbd5-42d9-a7c2-95d8ab60d2ba"
+      }
     }
   }
 }
